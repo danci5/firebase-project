@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       todoName: '',
       workingOn: false,
+      done: false,
       todoList: []
     }
   }
@@ -23,7 +24,8 @@ class App extends Component {
         newTodoList.push({
           id: todoItem,
           todoName: todoList[todoItem].todoName,
-          workingOn: todoList[todoItem].workingOn
+          workingOn: todoList[todoItem].workingOn,
+          done: todoList[todoItem].done
         })
       }
 
@@ -36,13 +38,20 @@ class App extends Component {
 
   handleStartWork = (todoItem) => {
     const todoItemRef = firebase.database().ref(`/todo-list/${todoItem.id}`);
-    todoItemRef.set({
-      ...todoItem,
-      workingOn: true
+    todoItemRef.update({
+      workingOn: true,
+      done: false
     })
   }
 
   handleFinish = (todoItem) => {
+    const todoItemRef = firebase.database().ref(`/todo-list/${todoItem.id}`);
+    todoItemRef.update({
+      done: true
+    });
+  }
+  
+  handleDelete = (todoItem) => {
     const todoItemRef = firebase.database().ref(`/todo-list/${todoItem.id}`);
     todoItemRef.remove();
   }
@@ -87,8 +96,10 @@ class App extends Component {
                     <li key={todoItem}>
                       <span>{todoItem.todoName}</span>
                       <span>{todoItem.workingOn ? 'DOING' : 'NOT STARTED'}</span>
-                      {!todoItem.workingOn && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-hourglass-start"/></span>}
-                      {todoItem.workingOn && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-check"/></span>}
+                      {!todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-hourglass-start"/></span>}
+                      {todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-check"/></span>}
+                      {todoItem.workingOn && todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-sync"/></span>}
+                      <span onClick={() => this.handleDelete(todoItem)}><i className="fas fa-trash-alt"/></span>
                     </li>
                   )
                 })}
