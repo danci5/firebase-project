@@ -83,29 +83,27 @@ class App extends Component {
           <h1 className="App-title">Welcome to firebase Todo</h1>
         </header>
         <section className='add-item'>
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" name="todoName" placeholder="What to do?" onChange={this.handleChange} value={this.state.todoName} />
-              <button>Add Todo item</button>
-            </form>
-          </section>
-          <section className='display-item'>
-            <div className='wrapper'>
-              <ul>
-                {this.state.todoList.map(todoItem => {
-                  return (
-                    <li key={todoItem}>
-                      <span>{todoItem.todoName}</span>
-                      <span>{todoItem.workingOn ? 'DOING' : 'NOT STARTED'}</span>
-                      {!todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-hourglass-start"/></span>}
-                      {todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-check"/></span>}
-                      {todoItem.workingOn && todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-sync"/></span>}
-                      <span onClick={() => this.handleDelete(todoItem)}><i className="fas fa-trash-alt"/></span>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          </section>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="todoName" placeholder="What to do?" onChange={this.handleChange} value={this.state.todoName} />
+            <button>Add Todo item</button>
+          </form>
+        </section>
+        <section className='display-item'>
+            <ul>
+              {this.state.todoList.map(todoItem => {
+                return (
+                  <li key={todoItem}>
+                    <span className={"name " + (todoItem.done ? 'done' : '')}>{todoItem.todoName}</span>
+                    <span className="state">{todoItem.done ? 'DONE' : (todoItem.workingOn ? 'DOING' : 'NOT STARTED')}</span>
+                    {!todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-hourglass-start"/></span>}
+                    {todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-check"/></span>}
+                    {todoItem.workingOn && todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-sync"/></span>}
+                    <span onClick={() => this.handleDelete(todoItem)}><i className="fas fa-trash-alt"/></span>
+                  </li>
+                )
+              })}
+            </ul>
+        </section>
       </div>
     );
   }

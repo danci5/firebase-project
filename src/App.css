@@ -2,6 +2,40 @@
   text-align: center;
 }
 
+.display-item {
+  width: 60%;
+  margin: auto;
+}
+
+.display-item ul {
+  text-align: left;
+  list-style-type: none;
+}
+
+.display-item ul li {
+  margin: 5px;
+}
+
+.display-item ul li .name {
+  margin: 0 10px;
+  font-size: 20px; 
+}
+
+.display-item ul li .name.done {
+  margin: 0 10px;
+  font-size: 20px; 
+  text-decoration: line-through;
+}
+
+.display-item ul li .state {
+  margin: 0 10px;
+}
+
+.display-item ul li span svg {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
