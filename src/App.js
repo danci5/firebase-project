@@ -55,6 +55,11 @@ class App extends Component {
     const todoItemRef = firebase.database().ref(`/todo-list/${todoItem.id}`);
     todoItemRef.remove();
   }
+  
+  handleDeleteAll() {
+    const itemsRef = firebase.database().ref('todo-list');
+    itemsRef.remove();
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -103,6 +108,9 @@ class App extends Component {
                 )
               })}
             </ul>
+        </section>
+        <section className='delete-all'>
+            <span onClick={() => this.handleDeleteAll()}>DELETE ALL <i className="fas fa-trash"/></span>
         </section>
       </div>
     );
