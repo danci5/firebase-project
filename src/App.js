@@ -96,8 +96,8 @@ class App extends Component {
                     <span className={"name " + (todoItem.done ? 'done' : '')}>{todoItem.todoName}</span>
                     <span className="state">{todoItem.done ? 'DONE' : (todoItem.workingOn ? 'DOING' : 'NOT STARTED')}</span>
                     {!todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-hourglass-start"/></span>}
-                    {todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-check"/></span>}
-                    {todoItem.workingOn && todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-sync"/></span>}
+                    {todoItem.workingOn && !todoItem.done && <span onClick={() => this.handleFinish(todoItem)}><i className="fas fa-sync"/></span>}
+                    {todoItem.workingOn && todoItem.done && <span onClick={() => this.handleStartWork(todoItem)}><i className="fas fa-check"/></span>}
                     <span onClick={() => this.handleDelete(todoItem)}><i className="fas fa-trash-alt"/></span>
                   </li>
                 )
