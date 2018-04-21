@@ -8,31 +8,31 @@
 }
 
 .display-item ul {
-  text-align: left;
+  padding-left: 0;
+  margin-bottom: 50px;
   list-style-type: none;
 }
 
 .display-item ul li {
-  margin: 5px;
+  margin: 10px 0;
+  padding: 0 120px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .display-item ul li .name {
-  margin: 0 10px;
   font-size: 20px; 
+  width: 300px;
 }
 
 .display-item ul li .name.done {
-  margin: 0 10px;
   font-size: 20px; 
   text-decoration: line-through;
 }
 
-.display-item ul li .state {
-  margin: 0 10px;
-}
-
 .display-item ul li span svg {
-  margin: 0 5px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
@@ -77,7 +77,8 @@ form {
 
 input {
   border: none;
-  padding: 20px 0 0 0;
+  padding: 20px 0 5px 0;
+  font-size: 16px;
   border-bottom: solid 1px black;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, black 4%);
@@ -114,4 +115,27 @@ button:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  margin: 40px 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info img {
+  height: 100px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.Authentication-wrapper button {
+  margin: 0;
+}
+
+.delete-all .delete {
+  cursor: pointer;
+  margin-left: 10px;
 }
