@@ -1,3 +1,6 @@
+### presentation https://docs.google.com/presentation/d/1Xm0al2Jog0Rm3kyyfERBBrPIOqNHp70MPOXDgfURNXc/edit#slide=id.p
+### deployed at https://pa195-todolist.firebaseapp.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
